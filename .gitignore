@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/src/app/mock-data/parking.json
+/src/app/mock-data/poi.json
+/src/app/mock-data/vehicle.json
+/src/app/keys/google-maps-key.ts

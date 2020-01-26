@@ -1,0 +1,14 @@
+<agm-marker [iconUrl]="markerType(vehicle)"
+			[title]="vehicle.name"
+			[latitude]="vehicle.location.latitude"
+			[longitude]="vehicle.location.longitude"
+			(markerClick)="getInfo(vehicle)">
+	<agm-info-window [disableAutoPan]="true">
+		<ul>
+			<li>{{vehicle.name}}</li>
+			<li>{{vehicle.plates}}</li>
+			<li>{{vehicle.sideNumber}}</li>
+			<li>{{vehicle.battery}}</li>
+		</ul>
+	</agm-info-window>
+</agm-marker>
