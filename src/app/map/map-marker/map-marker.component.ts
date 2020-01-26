@@ -1,20 +1,25 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Vehicle } from '../models/vehicle.model';
+import { Parking } from '../models/parking.model';
+import { PointOfInterest } from '../models/poi.model';
 
 @Component({
 	selector: 'app-map-marker',
 	templateUrl: './map-marker.component.html',
 	styleUrls: ['./map-marker.component.scss']
 })
-export class MapMarkerComponent implements OnInit {
+export class MapMarkerComponent {
 	@Input()
 	vehicle: Vehicle;
 
-	constructor() {
-	}
+	@Input()
+	parking: Parking;
 
-	ngOnInit() {
-	}
+	@Input()
+	pointOfInterest: PointOfInterest;
+
+	parkingIcon: string = 'assets/images/parking.svg';
+	poiIcon: string = 'assets/images/poi.svg';
 
 	vehicleMarker(vehicle: Vehicle): string {
 		const isVehicleAvailable = vehicle.status !== 'AVAILABLE',
@@ -36,17 +41,8 @@ export class MapMarkerComponent implements OnInit {
 			} else {
 				return 'assets/images/truck_black.svg';
 			}
-
 		}
 
-	}
-
-	markerType(vehicle: Vehicle): string {
-
-		return this.vehicleMarker(vehicle);
-	}
-
-	getInfo(vehicle) {
 	}
 
 }

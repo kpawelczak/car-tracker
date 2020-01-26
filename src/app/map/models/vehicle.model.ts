@@ -10,7 +10,6 @@ export class Vehicle {
 				readonly type: string,
 				readonly status: string,
 				readonly battery: number) {
-
 	}
 
 }

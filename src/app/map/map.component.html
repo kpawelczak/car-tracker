@@ -1,13 +1,28 @@
 <agm-map
-	[latitude]="52.237049"
-	[longitude]="21.017532"
-	[zoom]="7"
+	[latitude]="51.107883"
+	[longitude]="17.038538"
+	[zoom]="12"
 	[streetViewControl]="false">
 
-	<div *ngFor="let mapObject of mapObjects">
+	<div *ngFor="let vehicle of vehicles">
+		<app-map-marker [vehicle]="vehicle"></app-map-marker>
+	</div>
 
-		<app-map-marker [vehicle]="mapObject"></app-map-marker>
+	<div *ngIf="isParkingToggled()">
+		<div *ngFor="let parkingLot of parking">
+			<app-map-marker [parking]="parkingLot"></app-map-marker>
+		</div>
+	</div>
 
+	<div *ngIf="isPointOfInterestToggled()">
+		<div *ngFor="let pointOfInterest of pointOfInterests">
+			<app-map-marker [pointOfInterest]="pointOfInterest"></app-map-marker>
+		</div>
 	</div>
 
 </agm-map>
+<button (click)="filterTrucks()">Trucks</button>
+<button (click)="filterCars()">Cars</button>
+
+<button (click)="toggleParking()">Parking</button>
+<button (click)="togglePoi()">Point of Interest</button>
