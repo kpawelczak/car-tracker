@@ -1,0 +1,14 @@
+<div class="map-toolbar">
+
+	<div #mapIcon>
+			<span *ngFor="let icon of icons; let iconIndex=index">
+
+				<mat-icon [svgIcon]="icon"
+						  [attr.data-icon-index]="iconIndex"
+						  (click)="filterObjects(iconIndex)">
+				</mat-icon>
+
+			</span>
+	</div>
+
+</div>

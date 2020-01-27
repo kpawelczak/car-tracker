@@ -1,0 +1,24 @@
+.map-toolbar {
+	position: absolute;
+	background: #f6f6f6;
+	border: {
+		style: solid;
+		width: 0 1px 1px 1px;
+		color: gray;
+	};
+	left: 50%;
+	top: 0;
+	transform: translateX(-50%);
+	z-index: 2;
+	padding: 8px;
+
+	.mat-icon {
+		cursor: pointer;
+		padding: 0 8px;
+		user-select: none;
+	}
+
+	.mat-icon-filtered {
+		opacity: 0.5;
+	}
+}

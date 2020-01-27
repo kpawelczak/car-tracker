@@ -6,6 +6,7 @@ import { AgmCoreModule } from '@agm/core';
 import { googleMapsApiKey } from '../keys/google-maps-key';
 import { MapDataResource } from '../mock-data/map-data.resource';
 import { MapMarkerComponent } from './map-marker/map-marker.component';
+import { MapToolbarModule } from './map-toolbar/map-toolbar.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MapMarkerComponent } from './map-marker/map-marker.component';
 		CommonModule,
 		AgmCoreModule.forRoot({
 			apiKey: googleMapsApiKey
-		})
+		}),
+		MapToolbarModule
 	],
 	declarations: [
 		MapComponent,

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Vehicle } from '../models/vehicle.model';
 import { Parking } from '../models/parking.model';
 import { PointOfInterest } from '../models/poi.model';
@@ -28,21 +28,20 @@ export class MapMarkerComponent {
 
 		if (isCar) {
 			if (isVehicleAvailable) {
-				return 'assets/images/car_gray.svg';
+				return 'assets/images/car-disabled.svg';
 			} else {
-				return 'assets/images/car_black.svg';
+				return 'assets/images/car.svg';
 			}
 
 		}
 
 		if (isTruck) {
 			if (isVehicleAvailable) {
-				// return 'assets/images/truck_gray.png';
+				return 'assets/images/truck_gray.svg';
 			} else {
-				return 'assets/images/truck_black.svg';
+				return 'assets/images/truck.svg';
 			}
 		}
-
 	}
 
 }

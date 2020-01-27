@@ -3,6 +3,10 @@ body {
 }
 
 .map-container {
-	margin: 0 auto;
+	position: relative;
+	margin: 40px auto;
 	width: 80%;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
