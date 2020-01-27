@@ -1,0 +1,6 @@
+<agm-marker [iconUrl]="vehicleMarker(vehicle)"
+			[title]="vehicle.name"
+			[latitude]="vehicle.location.latitude"
+			[longitude]="vehicle.location.longitude"
+			(markerClick)="openDialog(vehicle)">
+</agm-marker>

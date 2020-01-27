@@ -4,9 +4,14 @@ import { MapComponent } from './map.component';
 import { MapService } from './services/map.service';
 import { AgmCoreModule } from '@agm/core';
 import { googleMapsApiKey } from '../keys/google-maps-key';
-import { MapDataResource } from '../mock-data/map-data.resource';
-import { MapMarkerComponent } from './map-marker/map-marker.component';
 import { MapToolbarModule } from './map-toolbar/map-toolbar.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { MapMarkerInfo } from './map-markers/vehicle-marker/vehicle-marker-info/vehicle-marker-info.component';
+import { VehicleMarkerComponent } from './map-markers/vehicle-marker/vehicle-marker.component';
+import { PoiMarkerComponent } from './map-markers/poi-marker/poi-marker.component';
+import { ParkingMarkerComponent } from './map-markers/parking-marker/parking-marker.component';
 
 
 @NgModule({
@@ -15,18 +20,23 @@ import { MapToolbarModule } from './map-toolbar/map-toolbar.module';
 		AgmCoreModule.forRoot({
 			apiKey: googleMapsApiKey
 		}),
-		MapToolbarModule
+		AgmJsMarkerClustererModule,
+		MapToolbarModule,
+		MatDialogModule,
+		MatButtonModule
 	],
 	declarations: [
 		MapComponent,
-		MapMarkerComponent
+		VehicleMarkerComponent,
+		MapMarkerInfo,
+		PoiMarkerComponent,
+		ParkingMarkerComponent
 	],
 	exports: [
 		MapComponent
 	],
-	providers: [
-		MapService,
-		MapDataResource]
+	entryComponents: [MapMarkerInfo],
+	providers: [MapService]
 })
 export class MapModule {
 

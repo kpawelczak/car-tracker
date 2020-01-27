@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Vehicle } from './models/vehicle.model';
-import { MapDataResource } from '../mock-data/map-data.resource';
 import { MapService } from './services/map.service';
 import { Parking } from './models/parking.model';
 import { PointOfInterest } from './models/poi.model';
@@ -19,11 +18,10 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 	parkingVisible: boolean;
 	pointOfInterestVisible: boolean;
 
-	private parkingSubscription: Subscription; //TODO nazwa
-	private poiSubscription: Subscription; //TODO
+	private parkingSubscription: Subscription;
+	private poiSubscription: Subscription;
 
-	constructor(private mapDataResource: MapDataResource,
-				private mapService: MapService) {
+	constructor(private mapService: MapService) {
 	}
 
 	ngOnInit() {
@@ -48,19 +46,10 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.poiSubscription.unsubscribe();
 	}
 
-	toggleParking(): void {
-		this.parkingVisible = !this.parkingVisible;
-	}
-
 	isParkingToggled(): boolean {
 		if (this.parkingVisible) {
 			return this.parkingVisible;
 		}
-
-	}
-
-	togglePoi(): void {
-		this.pointOfInterestVisible = !this.pointOfInterestVisible;
 	}
 
 	isPointOfInterestToggled(): boolean {

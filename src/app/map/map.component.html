@@ -1,24 +1,29 @@
 <app-map-toolbar></app-map-toolbar>
-<agm-map
-	[latitude]="51.107883"
-	[longitude]="17.038538"
-	[zoom]="12"
-	[streetViewControl]="false">
+<agm-map [latitude]="51.107883"
+		 [longitude]="17.038538"
+		 [zoom]="12"
+		 [maxZoom]="16"
+		 [minZoom]="10"
+		 [streetViewControl]="false">
 
-	<div *ngFor="let vehicle of vehicles">
-		<app-map-marker [vehicle]="vehicle"></app-map-marker>
-	</div>
+	<agm-marker-cluster [gridSize]="12"
+						[imagePath]="'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m'">
 
-	<div *ngIf="isParkingToggled()">
-		<div *ngFor="let parkingLot of parking">
-			<app-map-marker [parking]="parkingLot"></app-map-marker>
+		<div *ngFor="let vehicle of vehicles">
+			<app-map-marker [vehicle]="vehicle"></app-map-marker>
 		</div>
-	</div>
 
-	<div *ngIf="isPointOfInterestToggled()">
-		<div *ngFor="let pointOfInterest of pointOfInterests">
-			<app-map-marker [pointOfInterest]="pointOfInterest"></app-map-marker>
+		<div *ngIf="isParkingToggled()">
+			<div *ngFor="let parkingLot of parking">
+				<app-parking-marker [parking]="parkingLot"></app-parking-marker>
+			</div>
 		</div>
-	</div>
 
+		<div *ngIf="isPointOfInterestToggled()">
+			<div *ngFor="let pointOfInterest of pointOfInterests">
+				<app-poi-marker [pointOfInterest]="pointOfInterest"></app-poi-marker>
+			</div>
+		</div>
+
+	</agm-marker-cluster>
 </agm-map>

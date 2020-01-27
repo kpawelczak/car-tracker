@@ -49,3 +49,4 @@ Thumbs.db
 /src/app/mock-data/vehicle.json
 /src/app/keys/google-maps-key.ts
 /src/app/map/services/url.ts
+/src/app/mock-data/

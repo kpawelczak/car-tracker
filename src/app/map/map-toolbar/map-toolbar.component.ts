@@ -19,7 +19,7 @@ export class MapToolbarComponent implements OnInit, AfterViewInit {
 	private cars: Array<Vehicle>;
 	private trucks: Array<Vehicle>;
 
-	private readonly FILTERED_OBJECTS_CLASS_NAME = 'mat-icon-filtered';
+	private readonly ICON_TOGGLED_CLASS_NAME = 'mat-icon-toggled';
 	private readonly TRUCK_INDEX = 0;
 	private readonly CAR_INDEX = 1;
 	private readonly PARKING_INDEX = 2;
@@ -158,18 +158,20 @@ export class MapToolbarComponent implements OnInit, AfterViewInit {
 
 	private toggleIcon(iconIndex: number): void {
 		const iconEl = this.mapIconRef.nativeElement.querySelector('[data-icon-index="' + iconIndex, ':]'),
-			iconElFiltered = iconEl.classList.contains(this.FILTERED_OBJECTS_CLASS_NAME);
+			iconElFiltered = iconEl.classList.contains(this.ICON_TOGGLED_CLASS_NAME);
 
 		if (iconElFiltered) {
-			this.renderer.removeClass(iconEl, this.FILTERED_OBJECTS_CLASS_NAME);
+			this.renderer.removeClass(iconEl, this.ICON_TOGGLED_CLASS_NAME);
 		} else {
-			this.renderer.addClass(iconEl, this.FILTERED_OBJECTS_CLASS_NAME);
+			this.renderer.addClass(iconEl, this.ICON_TOGGLED_CLASS_NAME);
 		}
 	}
 
 	private isFilterToggled(iconIndex: number): boolean {
-		const iconEl = this.mapIconRef.nativeElement.querySelector('[data-icon-index="' + iconIndex, ':]');
-		return iconEl.classList.contains(this.FILTERED_OBJECTS_CLASS_NAME);
+		const iconEl = this.mapIconRef.nativeElement.querySelector('[data-icon-index="' + iconIndex, ':]'),
+			isIconToggled = iconEl.classList.contains(this.ICON_TOGGLED_CLASS_NAME);
+
+		return isIconToggled;
 	}
 
 	private registerIcons() {
