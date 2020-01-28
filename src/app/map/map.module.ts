@@ -12,6 +12,8 @@ import { MapMarkerInfo } from './map-markers/vehicle-marker/vehicle-marker-info/
 import { VehicleMarkerComponent } from './map-markers/vehicle-marker/vehicle-marker.component';
 import { PoiMarkerComponent } from './map-markers/poi-marker/poi-marker.component';
 import { ParkingMarkerComponent } from './map-markers/parking-marker/parking-marker.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { ParkingMarkerComponent } from './map-markers/parking-marker/parking-mar
 		AgmJsMarkerClustererModule,
 		MapToolbarModule,
 		MatDialogModule,
-		MatButtonModule
+		MatButtonModule,
+		MatChipsModule,
+		MatProgressBarModule
 	],
 	declarations: [
 		MapComponent,

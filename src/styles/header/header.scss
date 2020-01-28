@@ -1,0 +1,29 @@
+@import "../variables";
+
+.app-header {
+	display: flex;
+	justify-content: space-between;
+	background: $primary;
+	padding: 12px;
+	text-align: center;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	color: $white;
+	box-shadow: 0 2px 4px lighten($primary, 20);
+
+	a {
+		align-self: center;
+		color: $white;
+		font-size: 16px;
+		padding: 2px;
+		text-decoration: none;
+		text-transform: capitalize;
+
+		&:hover {
+			color: darken($white, 30);
+		}
+	}
+
+	h4 {
+		margin: 0;
+	}
+}

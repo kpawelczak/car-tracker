@@ -1,13 +1,14 @@
-<app-map-toolbar></app-map-toolbar>
-<agm-map [latitude]="51.107883"
-		 [longitude]="17.038538"
+<app-map-toolbar (locationSelected)="changeLocation($event)"></app-map-toolbar>
+
+<agm-map [latitude]="latitude"
+		 [longitude]="longitude"
 		 [zoom]="12"
-		 [maxZoom]="16"
+		 [maxZoom]="20"
 		 [minZoom]="10"
 		 [streetViewControl]="false">
 
 	<agm-marker-cluster [gridSize]="12"
-						[imagePath]="'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m'">
+						[imagePath]="markerClusterImage">
 
 		<div *ngFor="let vehicle of vehicles">
 			<app-map-marker [vehicle]="vehicle"></app-map-marker>

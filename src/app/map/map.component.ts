@@ -4,6 +4,7 @@ import { MapService } from './services/map.service';
 import { Parking } from './models/parking.model';
 import { PointOfInterest } from './models/poi.model';
 import { Subscription } from 'rxjs';
+import { Location } from './models/location';
 
 @Component({
 	selector: 'app-map',
@@ -11,12 +12,17 @@ import { Subscription } from 'rxjs';
 	styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
+	latitude: number = 51.107883;
+	longitude: number = 17.038538;
+
 	vehicles: Array<Vehicle>;
 	parking: Array<Parking>;
 	pointOfInterests: Array<PointOfInterest>;
 
 	parkingVisible: boolean;
 	pointOfInterestVisible: boolean;
+
+	markerClusterImage = 'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m';
 
 	private parkingSubscription: Subscription;
 	private poiSubscription: Subscription;
@@ -44,6 +50,11 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 	ngOnDestroy(): void {
 		this.parkingSubscription.unsubscribe();
 		this.poiSubscription.unsubscribe();
+	}
+
+	changeLocation(location: Location) {
+		this.longitude = location.longitude;
+		this.latitude = location.latitude;
 	}
 
 	isParkingToggled(): boolean {

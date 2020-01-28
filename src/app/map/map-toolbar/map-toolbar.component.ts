@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MapService } from '../services/map.service';
 import { Vehicle } from '../models/vehicle.model';
 import { take, tap } from 'rxjs/operators';
+import { MatOption } from '@angular/material/core';
+import { Location } from '../models/location';
 
 @Component({
 	selector: 'app-map-toolbar',
@@ -12,6 +14,9 @@ import { take, tap } from 'rxjs/operators';
 export class MapToolbarComponent implements OnInit, AfterViewInit {
 	@ViewChild('mapIcon', { static: false })
 	mapIconRef: ElementRef;
+
+	@Output()
+	locationSelected = new EventEmitter();
 
 	icons: Array<string> = ['truck.svg', 'car.svg', 'parking.svg', 'poi.svg', 'battery.svg', 'car-avail.svg'];
 
@@ -109,13 +114,30 @@ export class MapToolbarComponent implements OnInit, AfterViewInit {
 		this.filterVehiclesBattery();
 	}
 
+	changeLocation(option: MatOption): void {
+		let location: Location;
+
+		if (option.value === 'Warszawa') {
+			location = {
+				latitude: 52.237049,
+				longitude: 21.017532
+			};
+		} else {
+			location = {
+				latitude: 51.107883,
+				longitude: 17.038538
+			};
+		}
+		this.locationSelected.emit(location);
+	}
+
 	private filterAvailableVehicles() {
 		const availableVehicles = this.vehicles.filter((vehicle) => vehicle.status === this.VEHICLE_STATUS);
 
-		if (this.isFilterToggled(this.AVAILABLE_INDEX)) {
-			this.vehicles = availableVehicles;
+		if (this.isFilterToggled(this.AVAILABLE_INDEX)) {//Todo na odwrót
 			this.mapService.filterVehicles(this.vehicles);
 		} else {
+			this.vehicles = availableVehicles;
 			this.mapService.filterVehicles(this.vehicles);
 		}
 	}
@@ -135,11 +157,11 @@ export class MapToolbarComponent implements OnInit, AfterViewInit {
 	private filterCars(): void {
 		let filteredCars = this.vehicles.filter((vehicle) => vehicle.type !== this.TYPE_CAR);
 
-		if (!this.isFilterToggled(this.CAR_INDEX)) {
-			this.vehicles = this.vehicles.concat(this.cars);
+		if (this.isFilterToggled(this.CAR_INDEX)) {
+			this.vehicles = filteredCars;
 			this.mapService.filterVehicles(this.vehicles);
 		} else {
-			this.vehicles = filteredCars;
+			this.vehicles = this.vehicles.concat(this.cars);
 			this.mapService.filterVehicles(this.vehicles);
 		}
 	}
@@ -148,19 +170,19 @@ export class MapToolbarComponent implements OnInit, AfterViewInit {
 		let filteredTrucks = this.vehicles.filter((vehicle) => vehicle.type !== this.TYPE_TRUCK);
 
 		if (!this.isFilterToggled(this.TRUCK_INDEX)) {
-			this.vehicles = this.vehicles.concat(this.trucks);
+			this.vehicles = filteredTrucks;
 			this.mapService.filterVehicles(this.vehicles);
 		} else {
-			this.vehicles = filteredTrucks;
+			this.vehicles = this.vehicles.concat(this.trucks);
 			this.mapService.filterVehicles(this.vehicles);
 		}
 	}
 
 	private toggleIcon(iconIndex: number): void {
 		const iconEl = this.mapIconRef.nativeElement.querySelector('[data-icon-index="' + iconIndex, ':]'),
-			iconElFiltered = iconEl.classList.contains(this.ICON_TOGGLED_CLASS_NAME);
+			iconElToggled = iconEl.classList.contains(this.ICON_TOGGLED_CLASS_NAME);
 
-		if (iconElFiltered) {
+		if (iconElToggled) {
 			this.renderer.removeClass(iconEl, this.ICON_TOGGLED_CLASS_NAME);
 		} else {
 			this.renderer.addClass(iconEl, this.ICON_TOGGLED_CLASS_NAME);
@@ -185,7 +207,14 @@ export class MapToolbarComponent implements OnInit, AfterViewInit {
 	private setIconsTitle(): void {
 		for (let i = 0; i < this.icons.length; i++) {
 			const iconEl = this.mapIconRef.nativeElement.querySelector('[data-icon-index="' + i, ':]'),
-				titleTexts = ['ciężarówki', 'samochody', 'parkingi', 'ciekawe miejsca', 'pojazdy z pełną baterią', 'dostępne pojazdy'];
+				titleTexts = [
+					'ciężarówki',
+					'samochody',
+					'parkingi',
+					'ciekawe miejsca',
+					'pojazdy z pełną baterią',
+					'dostępne pojazdy'
+				];
 			this.renderer.setAttribute(iconEl, 'title', titleTexts[i]);
 		}
 	}

@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Vehicle } from '../../models/vehicle.model';
-import { Parking } from '../../models/parking.model';
-import { PointOfInterest } from '../../models/poi.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MapMarkerInfo } from './vehicle-marker-info/vehicle-marker-info.component';
 
@@ -13,26 +11,13 @@ export class VehicleMarkerComponent {
 	@Input()
 	vehicle: Vehicle;
 
-
-
-
-
-
-	poiIcon: string = 'assets/images/poi.svg';
-
 	constructor(public dialog: MatDialog) {
 	}
 
 	openDialog(mapObject: any): void {
 		this.dialog.open(MapMarkerInfo, {
-			width: '250px',
-			data: {
-				name: mapObject.name,
-				plates: mapObject.plates,
-				sideNumber: mapObject.sideNumber,
-				battery: mapObject.battery
-			},
-			position:{
+			data: mapObject,
+			position: {
 				top: '20%'
 			}
 		});
@@ -49,12 +34,11 @@ export class VehicleMarkerComponent {
 			} else {
 				return 'assets/images/car.svg';
 			}
-
 		}
 
 		if (isTruck) {
 			if (isVehicleAvailable) {
-				return 'assets/images/truck_gray.svg';
+				return 'assets/images/truck-disabled.svg';
 			} else {
 				return 'assets/images/truck.svg';
 			}

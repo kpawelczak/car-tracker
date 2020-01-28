@@ -1,8 +1,21 @@
-<div class="map-marker-info-content">
+<div class="marker-vehicle-info-content">
 	<ul>
-		<li>{{vehicle.name}}</li>
-		<li>{{vehicle.plates}}</li>
-		<li>{{vehicle.sideNumber}}</li>
-		<li>{{vehicle.battery}}</li>
+		<li><span>{{vehicle.name}}</span>
+			<mat-chip [title]="'numer'">{{vehicle.sideNumber}}</mat-chip>
+		</li>
+		<li title="rejestracja">{{vehicle.plates}}
+
+		</li>
+
+		<li>
+			<mat-progress-bar [value]="vehicle.battery"
+							  [bufferValue]="100"
+							  [color]="getProgressBarColor()">
+			</mat-progress-bar>
+		</li>
+		<li>pojazd {{getVehicleStatus()}}</li>
+		<li>
+			<button mat-raised-button [color]="'primary'" [disabled]="isUnAvailable()">Wypożycz</button>
+		</li>
 	</ul>
 </div>

@@ -1,24 +1,39 @@
+@import "../variables";
+
 .map-toolbar {
 	position: absolute;
-	background: #f6f6f6;
+	display: flex;
+	background: $white;
 	border: {
 		style: solid;
-		width: 0 1px 1px 1px;
-		color: gray;
+		width: 0 4px 4px 4px;
+		color: $primary;
 	};
 	left: 50%;
-	top: 0;
+	top: -4px;
 	transform: translateX(-50%);
 	z-index: 2;
-	padding: 8px;
+	padding: 20px 24px 0 24px;
 
 	.mat-icon {
 		cursor: pointer;
-		padding: 0 8px;
+		padding: 0 12px;
 		user-select: none;
+		transform: scale(1.2);
 	}
 
-	.mat-icon-toggled{
+	.mat-icon-toggled {
 		opacity: 0.5;
 	}
+
+	.mat-form-field {
+		padding: 0 32px 0 0;
+
+		.mat-form-field-infix {
+			border: none;
+			width: 100px;
+			padding: 0;
+		}
+	}
+
 }

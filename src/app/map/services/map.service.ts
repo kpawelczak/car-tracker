@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { url } from './url';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Vehicle } from '../models/vehicle.model';
 import { map, take, tap } from 'rxjs/operators';
@@ -9,7 +8,7 @@ import { PointOfInterest } from '../models/poi.model';
 
 @Injectable()
 export class MapService {
-	private readonly url: string = url;
+	private readonly url: string = 'https://dev.vozilla.pl/api-client-portal';
 	private readonly mapObjectType = '/map?objectType=';
 
 	vehicles$ = new Subject<Array<Vehicle>>();
@@ -22,8 +21,8 @@ export class MapService {
 
 	constructor(private http: HttpClient) {
 		this.getVehicles()
-		.pipe(take(1))
-		.subscribe();
+			.pipe(take(1))
+			.subscribe();
 	}
 
 	getVehicles(): Observable<Array<Vehicle>> {

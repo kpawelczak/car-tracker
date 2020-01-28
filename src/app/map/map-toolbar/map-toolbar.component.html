@@ -1,5 +1,16 @@
 <div class="map-toolbar">
 
+	<mat-form-field>
+		<mat-select [value]="'Wrocław'" (selectionChange)="changeLocation($event)">
+			<mat-option [value]="'Warszawa'">
+				Warszawa
+			</mat-option>
+			<mat-option [value]="'Wrocław'">
+				Wrocław
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+
 	<div #mapIcon>
 			<span *ngFor="let icon of icons; let iconIndex=index">
 
@@ -10,5 +21,4 @@
 
 			</span>
 	</div>
-
 </div>
