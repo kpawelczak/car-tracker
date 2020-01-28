@@ -1,23 +1,9 @@
+import { Injectable } from '@angular/core';
+import { Vehicle } from '../models/vehicle.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Vehicle } from '../models/vehicle.model';
 import { map } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-
-export abstract class AbstractHttpService<T> {
-	private readonly url: string = 'https://dev.vozilla.pl/api-client-portal';
-	private readonly mapObjectType = '/map?objectType=';
-
-	protected constructor(private httpClient: HttpClient) {
-
-	}
-
-	abstract getType(): string
-
-	getData(): Observable<T> {
-		return this.httpClient.get<T>(this.url + this.mapObjectType + this.getType());
-	}
-}
+import { AbstractHttpService } from '../../../common/abstract-classes/abstract-http.service';
 
 @Injectable()
 class VehicleService extends AbstractHttpService<Vehicle> {

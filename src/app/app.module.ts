@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { MapModule } from './map/map.module';
+import { MapModule } from './modules/map/map.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './common/header/header.component';
 
 
 @NgModule({

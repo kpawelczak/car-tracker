@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { Vehicle } from './models/vehicle.model';
+import { Vehicle } from '../vehicles/models/vehicle.model';
 import { MapService } from './services/map.service';
-import { Parking } from './models/parking.model';
-import { PointOfInterest } from './models/poi.model';
+import { Parking } from '../parking/models/parking.model';
+import { PointOfInterest } from '../poi/models/poi.model';
 import { Subscription } from 'rxjs';
 import { Location } from './models/location';
 

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { Vehicle } from '../models/vehicle.model';
+import { Vehicle } from '../../vehicles/models/vehicle.model';
 import { map, take, tap } from 'rxjs/operators';
-import { Parking } from '../models/parking.model';
-import { PointOfInterest } from '../models/poi.model';
+import { Parking } from '../../parking/models/parking.model';
+import { PointOfInterest } from '../../poi/models/poi.model';
 
 @Injectable()
 export class MapService {

@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MapService } from '../services/map.service';
-import { Vehicle } from '../models/vehicle.model';
+import { MapService } from '../../services/map.service';
+import { Vehicle } from '../../../vehicles/models/vehicle.model';
 import { take, tap } from 'rxjs/operators';
 import { MatOption } from '@angular/material/core';
-import { Location } from '../models/location';
+import { Location } from '../../models/location';
 
 @Component({
 	selector: 'app-map-toolbar',
