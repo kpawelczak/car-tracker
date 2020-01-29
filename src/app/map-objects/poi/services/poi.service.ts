@@ -2,21 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AbstractHttpService } from '../../../common/abstract-classes/abstract-http.service';
+import { AbstractHttpService } from '../../common/abstract-classes/abstract-http.service';
 import { PointOfInterest } from '../models/poi.model';
 
 @Injectable()
-class VehicleService extends AbstractHttpService<PointOfInterest> {
+export class PoiService extends AbstractHttpService<PointOfInterest> {
 
 	constructor(httpClient: HttpClient) {
 		super(httpClient);
 	}
 
 	getType(): string {
-		return 'PARKING';
+		return 'POI';
 	}
 
-	getPointOfInterests(): Observable<PointOfInterest> {
+	getPointOfInterests(): Observable<Array<PointOfInterest>> {
 		return super.getData()
 					.pipe(
 						map((data: any) => {
@@ -31,5 +31,7 @@ class VehicleService extends AbstractHttpService<PointOfInterest> {
 						})
 					);
 	}
+
+
 
 }

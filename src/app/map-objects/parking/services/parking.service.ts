@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AbstractHttpService } from '../../../common/abstract-classes/abstract-http.service';
+import { AbstractHttpService } from '../../common/abstract-classes/abstract-http.service';
 import { Parking } from '../models/parking.model';
 
 @Injectable()
-class VehicleService extends AbstractHttpService<Parking> {
+export class ParkingService extends AbstractHttpService<Parking> {
 
 	constructor(httpClient: HttpClient) {
 		super(httpClient);
@@ -16,7 +16,7 @@ class VehicleService extends AbstractHttpService<Parking> {
 		return 'PARKING';
 	}
 
-	getParking(): Observable<Parking> {
+	getParking(): Observable<Array<Parking>> {
 		return super.getData()
 					.pipe(
 						map((data: any) => {

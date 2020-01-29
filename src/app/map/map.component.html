@@ -14,16 +14,12 @@
 			<app-map-marker [vehicle]="vehicle"></app-map-marker>
 		</div>
 
-		<div *ngIf="isParkingToggled()">
-			<div *ngFor="let parkingLot of parking">
-				<app-parking-marker [parking]="parkingLot"></app-parking-marker>
-			</div>
+		<div *ngFor="let parkingLot of parking">
+			<app-parking-marker [parking]="parkingLot"></app-parking-marker>
 		</div>
 
-		<div *ngIf="isPointOfInterestToggled()">
-			<div *ngFor="let pointOfInterest of pointOfInterests">
-				<app-poi-marker [pointOfInterest]="pointOfInterest"></app-poi-marker>
-			</div>
+		<div *ngFor="let pointOfInterest of pointOfInterests">
+			<app-poi-marker [pointOfInterest]="pointOfInterest"></app-poi-marker>
 		</div>
 
 	</agm-marker-cluster>
