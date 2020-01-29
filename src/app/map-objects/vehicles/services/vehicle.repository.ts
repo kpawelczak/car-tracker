@@ -16,7 +16,8 @@ export class VehicleRepository {
 				(vehicles) => {
 					this.vehicles = vehicles;
 					this.vehicles$.next(this.vehicles);
-				}
+				},
+			(error) => console.log(error)
 			);
 	}
 

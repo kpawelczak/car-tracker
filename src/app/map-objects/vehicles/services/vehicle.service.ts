@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Vehicle } from '../models/vehicle.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { AbstractHttpService } from '../../common/abstract-classes/abstract-http.service';
 
 @Injectable()

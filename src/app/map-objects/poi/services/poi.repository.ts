@@ -16,7 +16,8 @@ export class PoiRepository {
 				(pointOfInterests) => {
 					this.pointOfInterests = pointOfInterests;
 					this.pointOfInterests$.next(this.pointOfInterests);
-				}
+				},
+				(error) => console.log(error)
 			);
 	}
 

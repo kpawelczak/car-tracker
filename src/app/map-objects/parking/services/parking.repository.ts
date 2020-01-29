@@ -16,7 +16,8 @@ export class ParkingRepository {
 				(parking) => {
 					this.parking = parking;
 					this.parking$.next(this.parking);
-				}
+				},
+				(error) => console.log(error)
 			);
 	}
 
