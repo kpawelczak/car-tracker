@@ -17,7 +17,7 @@ export class VehicleRepository {
 					this.vehicles = vehicles;
 					this.vehicles$.next(this.vehicles);
 				},
-			(error) => console.log(error)
+				(error) => console.log(error)
 			);
 	}
 
@@ -32,6 +32,7 @@ export class VehicleRepository {
 				   batteryPower: number): void {
 
 		let filteredVehicles = [...this.vehicles];
+
 		filteredVehicles = filteredVehicles.filter((vehicle) => {
 
 				if (!filterCars) {
@@ -40,6 +41,7 @@ export class VehicleRepository {
 						return false;
 					}
 				}
+
 				if (!filterTrucks) {
 
 					if (vehicle.type === 'TRUCK') {
@@ -60,7 +62,8 @@ export class VehicleRepository {
 						return false;
 					}
 				}
-				return true
+
+				return true;
 			}
 		);
 

@@ -1,0 +1,38 @@
+<div class="marker-vehicle-info-content">
+	<ul>
+
+		<li>
+			<span>{{vehicle.name}}</span>
+			<mat-chip [title]="'numer'"
+					  [disableRipple]="true">
+				{{vehicle.sideNumber}}
+			</mat-chip>
+		</li>
+
+		<li>
+			<mat-progress-bar [value]="vehicle.battery"
+							  [bufferValue]="100"
+							  [color]="getProgressBarColor()">
+			</mat-progress-bar>
+
+			<mat-chip [title]="'zasięg'"
+					  [color]="getProgressBarColor()"
+					  [selected]="true"
+					  [disableRipple]="true">
+				{{vehicle.rangeKm}} km
+			</mat-chip>
+		</li>
+
+		<li title="rejestracja">
+			<span>{{vehicle.plates}}</span>
+			<mat-chip [color]="getVehicleStatusColor()"
+					  [selected]="true"
+					  [disableRipple]="true">{{getVehicleStatus()}}</mat-chip>
+		</li>
+
+		<li *ngIf="vehicle.address">
+			ul. {{vehicle.address}}
+		</li>
+
+	</ul>
+</div>

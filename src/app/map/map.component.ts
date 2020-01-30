@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Location } from './models/location';
 import { VehicleRepository } from '../map-objects/vehicles/services/vehicle.repository';
@@ -11,8 +11,7 @@ import { ParkingRepository } from '../map-objects/parking/services/parking.repos
 @Component({
 	selector: 'app-map',
 	templateUrl: './map.component.html',
-	styleUrls: ['./map.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
 	latitude: number = 51.107883;
@@ -49,7 +48,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
 	}
 
 	ngAfterViewChecked(): void {
-		this.changeDetectionRef.detectChanges()
+		this.changeDetectionRef.detectChanges();
 	}
 
 	ngOnDestroy(): void {

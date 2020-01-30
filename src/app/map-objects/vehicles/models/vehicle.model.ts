@@ -9,7 +9,9 @@ export class Vehicle {
 				},
 				readonly type: string,
 				readonly status: string,
-				readonly battery: number) {
+				readonly battery: number,
+				readonly rangeKm: number,
+				readonly address: string) {
 	}
 
 }

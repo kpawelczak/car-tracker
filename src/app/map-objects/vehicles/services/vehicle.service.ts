@@ -29,7 +29,9 @@ export class VehicleService extends AbstractHttpService<Vehicle> {
 									vehicle.location,
 									vehicle.type,
 									vehicle.status,
-									vehicle.batteryLevelPct
+									vehicle.batteryLevelPct,
+									vehicle.rangeKm,
+									vehicle.address
 								);
 							});
 						}));

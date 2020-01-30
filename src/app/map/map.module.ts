@@ -10,7 +10,6 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { VehicleModule } from '../map-objects/vehicles/vehicle.module';
-import { MapMarkerInfo } from '../map-objects/vehicles/components/vehicle-marker/vehicle-marker-info/vehicle-marker-info.component';
 import { PoiModule } from '../map-objects/poi/poi.module';
 import { ParkingModule } from '../map-objects/parking/parking.module';
 
@@ -26,20 +25,12 @@ import { ParkingModule } from '../map-objects/parking/parking.module';
 		PoiModule,
 		ParkingModule,
 		MapToolbarModule,
-		MatDialogModule,
-		MatButtonModule,
-		MatChipsModule,
-		MatProgressBarModule
 	],
 	declarations: [
-		MapComponent,
-		MapMarkerInfo
+		MapComponent
 	],
 	exports: [
 		MapComponent
-	],
-	entryComponents: [
-		MapMarkerInfo
 	]
 })
 export class MapModule {

@@ -32,6 +32,4 @@ export class PoiService extends AbstractHttpService<PointOfInterest> {
 					);
 	}
 
-
-
 }

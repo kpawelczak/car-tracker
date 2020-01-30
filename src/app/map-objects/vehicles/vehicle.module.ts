@@ -3,13 +3,23 @@ import { VehicleService } from './services/vehicle.service';
 import { VehicleRepository } from './services/vehicle.repository';
 import { VehicleMarkerComponent } from './components/vehicle-marker/vehicle-marker.component';
 import { AgmCoreModule } from '@agm/core';
+import { VehicleMarkerInfo } from './components/vehicle-marker-info/vehicle-marker-info.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
 	imports: [
-		AgmCoreModule
+		CommonModule,
+		AgmCoreModule,
+		MatDialogModule,
+		MatChipsModule,
+		MatProgressBarModule
 	],
 	declarations: [
-		VehicleMarkerComponent
+		VehicleMarkerComponent,
+		VehicleMarkerInfo
 	],
 	exports: [
 		VehicleMarkerComponent
@@ -17,8 +27,10 @@ import { AgmCoreModule } from '@agm/core';
 	providers: [
 		VehicleService,
 		VehicleRepository
+	],
+	entryComponents: [
+		VehicleMarkerInfo
 	]
-
 })
 export class VehicleModule {
 

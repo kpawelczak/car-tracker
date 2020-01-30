@@ -1,15 +1,14 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Vehicle } from '../../../models/vehicle.model';
+import { Vehicle } from '../../models/vehicle.model';
 import { ThemePalette } from '@angular/material/core';
 
 @Component({
 	templateUrl: './vehicle-marker-info.component.html'
 })
-export class MapMarkerInfo {
+export class VehicleMarkerInfo {
 	vehicleAvailable: string = 'dostępny';
 	vehicleUnAvailable: string = 'niedostępny';
-
 
 	constructor(@Inject(MAT_DIALOG_DATA) public vehicle: Vehicle) {
 	}
@@ -31,6 +30,14 @@ export class MapMarkerInfo {
 			return this.vehicleAvailable;
 		} else {
 			return this.vehicleUnAvailable;
+		}
+	}
+
+	getVehicleStatusColor(): ThemePalette {
+		if (this.getVehicleStatus()) {
+			return 'primary';
+		} else {
+			return 'warn';
 		}
 	}
 

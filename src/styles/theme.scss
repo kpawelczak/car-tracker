@@ -8,3 +8,4 @@ $progress-bar-warn: mat-palette($mat-red);
 $progress-bar-theme: mat-light-theme($progress-bar-primary, $progress-bar-accent, $progress-bar-warn);
 
 @include mat-progress-bar-theme($progress-bar-theme);
+@include mat-chips-theme($progress-bar-theme);

@@ -116,6 +116,7 @@ export class MapToolbarComponent implements AfterViewInit, AfterViewChecked {
 				longitude: 17.038538
 			};
 		}
+
 		this.locationSelected.emit(location);
 	}
 
@@ -137,7 +138,7 @@ export class MapToolbarComponent implements AfterViewInit, AfterViewChecked {
 		return isIconToggled;
 	}
 
-	private registerIcons() {
+	private registerIcons(): void {
 		this.icons.forEach((icon) => {
 			this.iconRegistry.addSvgIcon(
 				icon,
@@ -147,15 +148,17 @@ export class MapToolbarComponent implements AfterViewInit, AfterViewChecked {
 
 	private setIconsTitle(): void {
 		for (let i = 0; i < this.icons.length; i++) {
+
 			const iconEl = this.mapIconRef.nativeElement.querySelector('[data-icon-index="' + i, ':]'),
 				titleTexts = [
 					'ciężarówki',
 					'samochody',
 					'parkingi',
 					'ciekawe miejsca',
-					'pojazdy z pełną baterią',
+					`pojazdy z poziomem baterii ponad ${this.batteryPower}% `,
 					'dostępne pojazdy'
 				];
+
 			this.renderer.setAttribute(iconEl, 'title', titleTexts[i]);
 		}
 	}

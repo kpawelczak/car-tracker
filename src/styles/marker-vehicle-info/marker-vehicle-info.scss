@@ -1,13 +1,19 @@
 @import '../variables';
 
 .marker-vehicle-info-content {
+
 	ul {
 		padding: 0;
 		margin: 0;
 		list-style: none;
 
 		li {
+			display: flex;
+			justify-content: space-between;
+			align-content: center;
 			padding: 8px 0;
+			font-weight: bold;
+			color: $primary;
 		}
 
 		li:nth-child(1) {
@@ -19,13 +25,20 @@
 	}
 
 	.mat-chip {
-		padding: 2px 4px;
+		padding: 2px 8px;
 		background: $primary;
-		color: $white;
+		color: $white ;
 		border-radius: 4px;
+		min-width: 50px;
+		text-align: center;
 	}
 
 	.mat-raised-button {
 		margin-top: 24px;
+	}
+
+	.mat-progress-bar {
+		margin-right: 12px;
+		height: 21px;
 	}
 }

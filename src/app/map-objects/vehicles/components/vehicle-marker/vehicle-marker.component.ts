@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Vehicle } from '../../models/vehicle.model';
 import { MatDialog } from '@angular/material/dialog';
-import { MapMarkerInfo } from './vehicle-marker-info/vehicle-marker-info.component';
+import { VehicleMarkerInfo } from '../vehicle-marker-info/vehicle-marker-info.component';
 
 @Component({
 	selector: 'app-map-marker',
@@ -15,7 +15,7 @@ export class VehicleMarkerComponent {
 	}
 
 	openDialog(mapObject: any): void {
-		this.dialog.open(MapMarkerInfo, {
+		this.dialog.open(VehicleMarkerInfo, {
 			data: mapObject,
 			position: {
 				top: '20%'

@@ -11,7 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 		CommonModule,
 		MatIconModule,
 		MatFormFieldModule,
-		MatSelectModule,
+		MatSelectModule
 	],
 	declarations: [
 		MapToolbarComponent
