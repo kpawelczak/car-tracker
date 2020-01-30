@@ -15,25 +15,43 @@
 	z-index: 2;
 	padding: 20px 24px 0 24px;
 
-	.mat-icon {
-		cursor: pointer;
-		padding: 0 12px;
-		user-select: none;
-		transform: scale(1.2);
-		opacity: 0.5;
-	}
+	.map-toolbar-icons {
+		display: flex;
 
-	.mat-icon-toggled {
-		opacity: 1;
+		.mat-icon {
+			cursor: pointer;
+			padding: 8px 12px;
+			user-select: none;
+			transform: scale(1.2);
+			opacity: 0.5;
+		}
+
+		.mat-icon-toggled {
+			opacity: 1;
+		}
 	}
 
 	.mat-form-field {
-		padding: 0 32px 0 0;
+		padding: 0 24px 0 0;
 		width: 100px;
 
 		.mat-form-field-infix {
 			border: none;
-			padding: 0;
+		}
+	}
+
+	.map-toolbar-battery-form {
+		width: 50px;
+		padding-right: 0;
+
+		input {
+			text-align: center;
+		}
+
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
 		}
 	}
 

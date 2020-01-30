@@ -1,7 +1,8 @@
 <div class="map-toolbar">
 
 	<mat-form-field>
-		<mat-select [value]="'Wrocław'" (selectionChange)="changeLocation($event)">
+		<mat-select [value]="'Wrocław'"
+					(selectionChange)="changeLocation($event)">
 			<mat-option [value]="'Warszawa'">
 				Warszawa
 			</mat-option>
@@ -11,7 +12,7 @@
 		</mat-select>
 	</mat-form-field>
 
-	<div #mapIcon>
+	<div #mapIcon class="map-toolbar-icons">
 			<span *ngFor="let icon of icons; let iconIndex=index">
 
 				<mat-icon [svgIcon]="icon"
@@ -21,4 +22,9 @@
 
 			</span>
 	</div>
+
+	<ng-container *ngIf="showBatteryForm">
+		<vehicle-battery-form [vehicleBattery]="batteryPower" (vehicleBatteryChanged)="batteryPowerChanged($event)">
+		</vehicle-battery-form>
+	</ng-container>
 </div>

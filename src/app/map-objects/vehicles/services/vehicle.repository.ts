@@ -51,7 +51,8 @@ export class VehicleRepository {
 
 				if (filterBattery) {
 
-					if (!(vehicle.battery > batteryPower)) {
+					if (!(vehicle.battery >= batteryPower)) {
+
 						return false;
 					}
 				}

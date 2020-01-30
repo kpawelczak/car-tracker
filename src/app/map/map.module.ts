@@ -12,6 +12,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { VehicleModule } from '../map-objects/vehicles/vehicle.module';
 import { PoiModule } from '../map-objects/poi/poi.module';
 import { ParkingModule } from '../map-objects/parking/parking.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({

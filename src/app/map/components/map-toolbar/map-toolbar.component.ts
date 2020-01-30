@@ -18,17 +18,18 @@ export class MapToolbarComponent implements AfterViewInit, AfterViewChecked {
 	@Output()
 	locationSelected = new EventEmitter();
 
-	icons: Array<string> = ['truck.svg', 'car.svg', 'parking.svg', 'poi.svg', 'battery.svg', 'car-avail.svg'];
+	icons: Array<string> = ['truck.svg', 'car.svg', 'parking.svg', 'poi.svg', 'car-avail.svg', 'battery.svg'];
 
 	batteryPower: number = 95;
+	showBatteryForm: boolean;
 
 	private readonly ICON_TOGGLED_CLASS_NAME = 'mat-icon-toggled';
 	private readonly TRUCK_INDEX = 0;
 	private readonly CAR_INDEX = 1;
 	private readonly PARKING_INDEX = 2;
 	private readonly POI_INDEX = 3;
-	private readonly BATTERY_INDEX = 4;
-	private readonly AVAILABLE_INDEX = 5;
+	private readonly AVAILABLE_INDEX = 4;
+	private readonly BATTERY_INDEX = 5;
 
 	constructor(private iconRegistry: MatIconRegistry,
 				private sanitizer: DomSanitizer,
@@ -70,6 +71,7 @@ export class MapToolbarComponent implements AfterViewInit, AfterViewChecked {
 		}
 
 		if (iconIndex === this.BATTERY_INDEX) {
+			this.showBatteryForm = !this.showBatteryForm;
 			this.toggleIcon(this.BATTERY_INDEX);
 		}
 
@@ -120,6 +122,11 @@ export class MapToolbarComponent implements AfterViewInit, AfterViewChecked {
 		this.locationSelected.emit(location);
 	}
 
+	batteryPowerChanged(power): void {
+		this.batteryPower = power;
+		this.filterVehicles();
+	}
+
 	private toggleIcon(iconIndex: number): void {
 		const iconEl = this.mapIconRef.nativeElement.querySelector('[data-icon-index="' + iconIndex, ':]'),
 			iconElToggled = iconEl.classList.contains(this.ICON_TOGGLED_CLASS_NAME);
@@ -155,8 +162,8 @@ export class MapToolbarComponent implements AfterViewInit, AfterViewChecked {
 					'samochody',
 					'parkingi',
 					'ciekawe miejsca',
-					`pojazdy z poziomem baterii ponad ${this.batteryPower}% `,
-					'dostępne pojazdy'
+					'dostępne pojazdy',
+					`bateria `
 				];
 
 			this.renderer.setAttribute(iconEl, 'title', titleTexts[i]);
