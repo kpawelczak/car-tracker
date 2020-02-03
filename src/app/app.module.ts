@@ -12,8 +12,8 @@ import { HeaderComponent } from './common/header/header.component';
 	imports: [
 		BrowserModule,
 		HttpClientModule,
-		MapModule,
-		BrowserAnimationsModule
+		BrowserAnimationsModule,
+		MapModule
 	],
 	declarations: [
 		AppComponent,

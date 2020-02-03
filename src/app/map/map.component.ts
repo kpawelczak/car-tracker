@@ -39,11 +39,12 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
 
 		this.subscriptions.add(
 			this.poiRepository.observePointOfInterests()
-				.subscribe((pointOfInterests) => this.pointOfInterests = pointOfInterests)
+				.subscribe((pointOfInterests: Array<PointOfInterest>) => this.pointOfInterests = pointOfInterests)
 		);
+
 		this.subscriptions.add(
 			this.parkingRepository.observeParking()
-				.subscribe((parking) => this.parking = parking)
+				.subscribe((parking: Array<Parking>) => this.parking = parking)
 		);
 	}
 

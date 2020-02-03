@@ -41,7 +41,4 @@ export class VehicleMarkerInfo {
 		}
 	}
 
-	isUnAvailable(): boolean {
-		return this.getVehicleStatus() !== this.vehicleAvailable;
-	}
 }
