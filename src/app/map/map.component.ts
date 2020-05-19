@@ -14,8 +14,8 @@ import { ParkingRepository } from '../map-objects/parking/services/parking.repos
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapComponent implements OnInit, OnDestroy, AfterViewChecked {
-	latitude: number = 51.107883;
-	longitude: number = 17.038538;
+	latitude: number = 52.220883;
+	longitude: number = 21.008538;
 
 	vehicles: Array<Vehicle> = [];
 	parking: Array<Parking> = [];

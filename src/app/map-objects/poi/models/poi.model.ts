@@ -4,8 +4,7 @@ export class PointOfInterest {
 				readonly location: {
 					latitude: number,
 					longitude: number
-				},
-				readonly category: string) {
+				}) {
 
 	}
 }

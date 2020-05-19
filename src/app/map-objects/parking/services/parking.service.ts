@@ -1,36 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { AbstractHttpService } from '../../common/abstract-classes/abstract-http.service';
+import { Observable, ReplaySubject } from 'rxjs';
 import { Parking } from '../models/parking.model';
+import { PointOfInterest } from '../../poi/models/poi.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
-export class ParkingService extends AbstractHttpService<Parking> {
+export class ParkingService {
 
-	constructor(httpClient: HttpClient) {
-		super(httpClient);
+	private parking$ = new ReplaySubject<Array<Parking>>();
+
+	constructor(private firestore: AngularFirestore) {
+		this.observeFirebaseChanges();
 	}
 
-	getType(): string {
-		return 'PARKING';
+	private observeFirebaseChanges(): void {
+		this.firestore
+			.collection('parking')
+			.valueChanges()
+			.subscribe((parking: Array<Parking>) => {
+				this.parking$.next(parking);
+			});
 	}
 
-	getParking(): Observable<Array<Parking>> {
-		return super.getData()
-					.pipe(
-						map((data: any) => {
-							return data.objects.map((parking) => {
-
-								return new Parking(
-									parking.location,
-									parking.name,
-									parking.spacesCount,
-									parking.availableSpacesCount
-								);
-							});
-						})
-					);
+	getParking(): Observable<Array<PointOfInterest>> {
+		return this.parking$.asObservable();
 	}
 
 }

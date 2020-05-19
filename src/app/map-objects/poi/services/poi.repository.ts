@@ -10,10 +10,11 @@ export class PoiRepository {
 	private pointOfInterests: Array<PointOfInterest> = [];
 
 	constructor(private pointOfInterestService: PoiService) {
-		this.pointOfInterestService.getPointOfInterests()
+		this.pointOfInterestService
+			.getPointOfInterests()
 			.pipe(take(1))
 			.subscribe(
-				(pointOfInterests) => {
+				(pointOfInterests: Array<PointOfInterest>) => {
 					this.pointOfInterests = pointOfInterests;
 					this.pointOfInterests$.next(this.pointOfInterests);
 				},

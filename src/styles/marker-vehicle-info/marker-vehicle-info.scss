@@ -1,44 +1,80 @@
 @import '../variables';
 
-.marker-vehicle-info-content {
+$padding: 16px;
 
-	ul {
+.vehicle-dialog {
+
+	.mat-dialog-container {
 		padding: 0;
-		margin: 0;
-		list-style: none;
+	}
 
-		li {
-			display: flex;
-			justify-content: space-between;
-			align-content: center;
-			padding: 8px 0;
+	.marker-vehicle-info-content {
+
+		.marker-vehicle-title {
+			background: $primary;
+			font-size: 24px;
 			font-weight: bold;
-			color: $primary;
+			padding: $padding;
+			color: $white;
 		}
 
-		li:nth-child(1) {
+		.marker-vehicle-basic-info {
+			display: flex;
+			justify-content: space-between;
+
+			.marker-vehicle-name {
+				font-size: 21px;
+				margin-right: 8px;
+			}
+
+			mat-chip {
+				font-size: 18px;
+			}
+		}
+
+		.marker-vehicle-street {
+			display: flex;
+			justify-content: space-between;
 
 			span {
 				margin-right: 8px;
 			}
 		}
-	}
 
-	.mat-chip {
-		padding: 2px 8px;
-		background: $primary;
-		color: $white ;
-		border-radius: 4px;
-		min-width: 50px;
-		text-align: center;
-	}
+		.marker-vehicle-battery {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 4px;
+		}
 
-	.mat-raised-button {
-		margin-top: 24px;
-	}
+		ul {
+			padding: $padding;
+			margin: 0;
+			list-style: none;
 
-	.mat-progress-bar {
-		margin-right: 12px;
-		height: 21px;
+			li {
+				display: block;
+				padding: 8px 0;
+				font-weight: bold;
+			}
+		}
+
+		.mat-chip {
+			padding: 2px 8px;
+			background: $primary;
+			color: $white;
+			border-radius: 4px;
+			min-width: 50px;
+			text-align: center;
+		}
+
+		.mat-raised-button {
+			margin-top: 24px;
+		}
+
+		.mat-progress-bar {
+			margin-right: 12px;
+			height: 21px;
+		}
 	}
 }

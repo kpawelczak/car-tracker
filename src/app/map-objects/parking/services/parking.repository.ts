@@ -13,7 +13,7 @@ export class ParkingRepository {
 		this.parkingService.getParking()
 			.pipe(take(1))
 			.subscribe(
-				(parking) => {
+				(parking: Array<Parking>) => {
 					this.parking = parking;
 					this.parking$.next(this.parking);
 				},

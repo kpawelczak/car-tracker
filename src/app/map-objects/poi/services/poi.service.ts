@@ -1,35 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { AbstractHttpService } from '../../common/abstract-classes/abstract-http.service';
+import { Observable, ReplaySubject } from 'rxjs';
 import { PointOfInterest } from '../models/poi.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
-export class PoiService extends AbstractHttpService<PointOfInterest> {
+export class PoiService {
 
-	constructor(httpClient: HttpClient) {
-		super(httpClient);
+	private poi$ = new ReplaySubject<Array<PointOfInterest>>();
+
+	constructor(private firestore: AngularFirestore) {
+		this.observeFirebaseChanges();
 	}
 
-	getType(): string {
-		return 'POI';
+	private observeFirebaseChanges(): void {
+		this.firestore
+			.collection('poi')
+			.valueChanges()
+			.subscribe((pointOfInterests: Array<PointOfInterest>) => {
+				this.poi$.next(pointOfInterests);
+			});
 	}
 
 	getPointOfInterests(): Observable<Array<PointOfInterest>> {
-		return super.getData()
-					.pipe(
-						map((data: any) => {
-							return data.objects.map((pointOfInterest) => {
-
-								return new PointOfInterest(
-									pointOfInterest.name,
-									pointOfInterest.location,
-									pointOfInterest.category
-								);
-							});
-						})
-					);
+		return this.poi$.asObservable();
 	}
 
 }

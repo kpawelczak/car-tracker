@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { VehicleService } from './vehicle.service';
 import { Observable, Subject } from 'rxjs';
 import { Vehicle } from '../models/vehicle.model';
-import { take } from 'rxjs/operators';
 
 @Injectable()
 export class VehicleRepository {
@@ -10,10 +9,10 @@ export class VehicleRepository {
 	private vehicles: Array<Vehicle> = [];
 
 	constructor(private vehicleService: VehicleService) {
-		this.vehicleService.getVehicles()
-			.pipe(take(1))
+		this.vehicleService
+			.getVehicles()
 			.subscribe(
-				(vehicles) => {
+				(vehicles: Array<Vehicle>) => {
 					this.vehicles = vehicles;
 					this.vehicles$.next(this.vehicles);
 				},

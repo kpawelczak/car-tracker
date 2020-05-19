@@ -19,7 +19,8 @@ export class VehicleMarkerComponent {
 			data: mapObject,
 			position: {
 				top: '20%'
-			}
+			},
+			panelClass: 'vehicle-dialog'
 		});
 	}
 

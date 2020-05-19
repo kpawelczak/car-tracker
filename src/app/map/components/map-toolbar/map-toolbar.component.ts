@@ -20,7 +20,7 @@ export class MapToolbarComponent implements AfterViewInit, AfterViewChecked {
 
 	icons: Array<string> = ['truck.svg', 'car.svg', 'parking.svg', 'poi.svg', 'car-avail.svg', 'battery.svg'];
 
-	batteryPower: number = 95;
+	batteryPower: number = 50;
 	showBatteryForm: boolean;
 
 	private readonly ICON_TOGGLED_CLASS_NAME = 'mat-icon-toggled';

@@ -7,8 +7,8 @@ import { ThemePalette } from '@angular/material/core';
 	templateUrl: './vehicle-marker-info.component.html'
 })
 export class VehicleMarkerInfo {
-	vehicleAvailable: string = 'dostępny';
-	vehicleUnAvailable: string = 'niedostępny';
+	private static readonly vehicleAvailable: string = 'dostępny';
+	private static readonly vehicleUnAvailable: string = 'niedostępny';
 
 	constructor(@Inject(MAT_DIALOG_DATA) public vehicle: Vehicle) {
 	}
@@ -27,14 +27,14 @@ export class VehicleMarkerInfo {
 
 	getVehicleStatus(): string {
 		if (this.vehicle.status === 'AVAILABLE') {
-			return this.vehicleAvailable;
+			return VehicleMarkerInfo.vehicleAvailable;
 		} else {
-			return this.vehicleUnAvailable;
+			return VehicleMarkerInfo.vehicleUnAvailable;
 		}
 	}
 
 	getVehicleStatusColor(): ThemePalette {
-		if (this.getVehicleStatus()) {
+		if (this.getVehicleStatus() === VehicleMarkerInfo.vehicleAvailable) {
 			return 'primary';
 		} else {
 			return 'warn';

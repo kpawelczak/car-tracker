@@ -1,40 +1,27 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Vehicle } from '../models/vehicle.model';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { AbstractHttpService } from '../../common/abstract-classes/abstract-http.service';
+import { Observable, ReplaySubject } from 'rxjs';
 
 @Injectable()
-export class VehicleService extends AbstractHttpService<Vehicle> {
+export class VehicleService {
+	private vehicles$ = new ReplaySubject<Array<Vehicle>>();
 
-	constructor(httpClient: HttpClient) {
-		super(httpClient);
+	constructor(private firestore: AngularFirestore) {
+		this.observeFirebaseChanges();
 	}
 
-	getType(): string {
-		return 'VEHICLE';
+	private observeFirebaseChanges(): void {
+		this.firestore
+			.collection('vehicles')
+			.valueChanges()
+			.subscribe((vehicles: Array<Vehicle>) => {
+				this.vehicles$.next(vehicles);
+			});
 	}
 
 	getVehicles(): Observable<Array<Vehicle>> {
-		return super.getData()
-					.pipe(
-						map((data: any) => {
-							return data.objects.map((vehicle) => {
-
-								return new Vehicle(
-									vehicle.name,
-									vehicle.platesNumber,
-									vehicle.sideNumber,
-									vehicle.location,
-									vehicle.type,
-									vehicle.status,
-									vehicle.batteryLevelPct,
-									vehicle.rangeKm,
-									vehicle.address
-								);
-							});
-						}));
+		return this.vehicles$.asObservable();
 	}
 
 }

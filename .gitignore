@@ -52,3 +52,5 @@ Thumbs.db
 firebase.json
 .firebaserc
 .firebase/*
+src/environments/firebase-config.ts
+src/app/backup/car-tracker.backup.ts
